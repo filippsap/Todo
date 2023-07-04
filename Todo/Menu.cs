@@ -1,4 +1,6 @@
-﻿namespace Todo
+﻿using Todo.Model;
+
+namespace Todo
 {
     public class Menu
     {
@@ -9,11 +11,11 @@
             Console.WriteLine("2.Создать todo");
         }
 
-        public void GetAllTodos()
+        public void GetAllTodos(IEnumerable<TodoItem> todoItems)
         {
             Console.Clear();
             Console.WriteLine("Список всех задач:");
-            foreach (var item in Store.Todos)
+            foreach (var item in todoItems)
             {
                 Console.WriteLine(item.Id + "." + item.Title + " | " + "Состояние: " + (item.IsDone ? "Готово" : "Не готово" )) ;
             }
@@ -28,10 +30,9 @@
             Console.WriteLine("Введите задачу: ");
         }
 
-        public int GetPageTodo(int id)
+        public int GetPageTodo(TodoItem todo)
         {
-            Console.WriteLine("Todo № " + id);
-            var todo = Store.Todos.FirstOrDefault(x => x.Id == id);
+            Console.WriteLine("Todo № " + todo.Id);         
             if (todo != null)
             {
                 Console.WriteLine("Задача | " + todo.Title);

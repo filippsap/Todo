@@ -10,31 +10,31 @@
         }
 
         public void StartProgram()
-        {                
+        {
             Console.Clear();
             Menu.GetMainMenu();
             var value = ReadValue();
             if (value == "1")
             {
-                Menu.GetAllTodos();
+                Menu.GetAllTodos(Store.Todos);
                 var val = ReadValue();
                 Console.Clear();
-                var result = Menu.GetPageTodo(int.Parse(val));
-                if(result > 0)
+                var todo = Store.Todos.FirstOrDefault(x => x.Id == int.Parse(val));
+                if (todo != null)
                 {
+                    Menu.GetPageTodo(todo);
                     var chouse = ReadValue();
-                    if(chouse == "1") 
-                    {                       
+                    if (chouse == "1")
+                    {
                         Store.СompleteTodo(int.Parse(val));
                         StartProgram();
                     }
+                    else
+                    {
+                        Console.ReadKey();
+                        StartProgram();
+                    }
                 }
-                else
-                {
-                    Console.ReadKey();
-                    StartProgram();
-                }
-                
             }
             else if (value == "2")
             {
