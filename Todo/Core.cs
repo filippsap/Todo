@@ -16,41 +16,51 @@
             var value = ReadValue();
             if (value == "1")
             {
-                Menu.GetAllTodos(Store.Todos);
-                var val = ReadValue();
-                Console.Clear();
-                var todo = Store.Todos.FirstOrDefault(x => x.Id == int.Parse(val));
-                if (todo != null)
+                TodosOutputScript();
+            }
+            else if (value == "2")
+            {
+                TodoCreateScript();
+            }
+
+        }
+
+        public void TodosOutputScript()
+        {
+            Menu.GetAllTodos(Store.Todos);
+            var value = ReadValue();
+            Console.Clear();
+            var todo = Store.Todos.FirstOrDefault(x => x.Id == int.Parse(value));
+            if (todo != null)
+            {
+                Menu.GetPageTodo(todo);
+                var chouse = ReadValue();
+                if (chouse == "1")
                 {
-                    Menu.GetPageTodo(todo);
-                    var chouse = ReadValue();
-                    if (chouse == "1")
-                    {
-                        Store.СompleteTodo(int.Parse(val));
-                        StartProgram();
-                    }
-                    else
-                    {
-                        Console.ReadKey();
-                        StartProgram();
-                    }
+                    Store.СompleteTodo(int.Parse(value));
+                    StartProgram();
                 }
                 else
                 {
-                    Menu.GetNullTodo();
                     Console.ReadKey();
                     StartProgram();
                 }
             }
-            else if (value == "2")
+            else
             {
-                Console.Clear();
-                Menu.GetPageCreate();
-                var title = ReadValue();
-                Store.Add(new Model.TodoItem { Title = title });
+                Menu.GetNullTodo();
+                Console.ReadKey();
                 StartProgram();
             }
+        }
 
+        public void TodoCreateScript()
+        {
+            Console.Clear();
+            Menu.GetPageCreate();
+            var title = ReadValue();
+            Store.Add(new Model.TodoItem { Title = title });
+            StartProgram();
         }
 
         public string ReadValue()

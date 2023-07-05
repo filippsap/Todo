@@ -19,14 +19,22 @@ namespace Todo
 
         public void GetAllTodos(List<TodoItem> todoItems)
         {
-            Console.Clear();
-            Console.WriteLine("Список всех задач:");
-            foreach (var item in todoItems)
+            if (todoItems.Count > 0)
             {
-                Console.WriteLine(item.Id + "." + item.Title + " | " + "Состояние: " + (item.IsDone ? "Готово" : "Не готово"));
+                Console.Clear();
+                Console.WriteLine("Список всех задач:");
+                foreach (var item in todoItems)
+                {
+                    Console.WriteLine(item.Id + "." + item.Title + " | " + "Состояние: " + (item.IsDone ? "Готово" : "Не готово"));
+                }
+                Console.WriteLine("\n \n");
+                Console.WriteLine("Напишите номер задачи для ее открытия");
             }
-            Console.WriteLine("\n \n");
-            Console.WriteLine("Напишите номер задачи для ее открытия");
+            else
+            {
+                Console.WriteLine("Задачи еще не созданы");
+            }
+
 
         }
 
