@@ -40,19 +40,16 @@
                     if (chouse == "1")
                     {
                         Store.СompleteTodo(int.Parse(value));
-                        StartProgram();
                     }
                     else
                     {
                         Console.ReadKey();
-                        StartProgram();
                     }
                 }
                 else
                 {
                     Menu.GetNullTodo();
                     Console.ReadKey();
-                    StartProgram();
                 }
                 StartProgram();
             }
