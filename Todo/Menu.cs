@@ -11,44 +11,40 @@ namespace Todo
             Console.WriteLine("2.Создать todo");
         }
 
-        public void GetAllTodos(IEnumerable<TodoItem> todoItems)
-        {
-            Console.Clear();
-            Console.WriteLine("Список всех задач:");
-            foreach (var item in todoItems)
-            {
-                Console.WriteLine(item.Id + "." + item.Title + " | " + "Состояние: " + (item.IsDone ? "Готово" : "Не готово" )) ;
-            }
-            Console.WriteLine("\n \n");
-            Console.WriteLine("Напишите номер задачи для ее открытия");
-
-        }
-
         public void GetPageCreate()
         {
             Console.WriteLine("Создать todo");
             Console.WriteLine("Введите задачу: ");
         }
 
-        public int GetPageTodo(TodoItem todo)
+        public void GetAllTodos(List<TodoItem> todoItems)
         {
-            Console.WriteLine("Todo № " + todo.Id);         
-            if (todo != null)
+            Console.Clear();
+            Console.WriteLine("Список всех задач:");
+            foreach (var item in todoItems)
             {
-                Console.WriteLine("Задача | " + todo.Title);
-                Console.WriteLine("Состояние | " + (todo.IsDone ? "Готово" : "Не готово \n \n"));
-                Console.WriteLine("1.Завершить задачу");
-                Console.WriteLine("2.Изменить задачу");
-
-                return todo.Id;
+                Console.WriteLine(item.Id + "." + item.Title + " | " + "Состояние: " + (item.IsDone ? "Готово" : "Не готово"));
             }
-            else
-            {
-                Console.WriteLine("Такой задачи нет. Нажмите на любую клавишу, чтобы вернутся в меню...");
+            Console.WriteLine("\n \n");
+            Console.WriteLine("Напишите номер задачи для ее открытия");
 
-                return 0;
-            }
         }
+
+        public void GetPageTodo(TodoItem todo)
+        {
+            Console.WriteLine("Todo № " + todo.Id);
+            Console.WriteLine("Задача | " + todo.Title);
+            Console.WriteLine("Состояние | " + (todo.IsDone ? "Готово" : "Не готово \n \n"));
+            Console.WriteLine("1.Завершить задачу");
+            Console.WriteLine("2.Изменить задачу");
+        }
+
+        public void GetNullTodo()
+        {
+            Console.Clear();
+            Console.WriteLine("Задачи с таким номером нет");
+        }
+
 
     }
 }

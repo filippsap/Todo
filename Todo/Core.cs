@@ -35,6 +35,12 @@
                         StartProgram();
                     }
                 }
+                else
+                {
+                    Menu.GetNullTodo();
+                    Console.ReadKey();
+                    StartProgram();
+                }
             }
             else if (value == "2")
             {
