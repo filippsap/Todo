@@ -32,6 +32,7 @@ namespace Todo
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("Задачи еще не созданы");
             }
 

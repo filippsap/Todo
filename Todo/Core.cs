@@ -28,27 +28,36 @@
         public void TodosOutputScript()
         {
             Menu.GetAllTodos(Store.Todos);
-            var value = ReadValue();
-            Console.Clear();
-            var todo = Store.Todos.FirstOrDefault(x => x.Id == int.Parse(value));
-            if (todo != null)
+            if (Store.Todos.Count > 0)
             {
-                Menu.GetPageTodo(todo);
-                var chouse = ReadValue();
-                if (chouse == "1")
+                var value = ReadValue();
+                Console.Clear();
+                var todo = Store.Todos.FirstOrDefault(x => x.Id == int.Parse(value));
+                if (todo != null)
                 {
-                    Store.СompleteTodo(int.Parse(value));
-                    StartProgram();
+                    Menu.GetPageTodo(todo);
+                    var chouse = ReadValue();
+                    if (chouse == "1")
+                    {
+                        Store.СompleteTodo(int.Parse(value));
+                        StartProgram();
+                    }
+                    else
+                    {
+                        Console.ReadKey();
+                        StartProgram();
+                    }
                 }
                 else
                 {
+                    Menu.GetNullTodo();
                     Console.ReadKey();
                     StartProgram();
                 }
+                StartProgram();
             }
             else
             {
-                Menu.GetNullTodo();
                 Console.ReadKey();
                 StartProgram();
             }
