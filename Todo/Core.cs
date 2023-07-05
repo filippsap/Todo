@@ -71,7 +71,7 @@
 
         public string ReadValue()
         {
-            return Console.ReadLine();
+            return Console.ReadLine()!;
         }
     }
 }
